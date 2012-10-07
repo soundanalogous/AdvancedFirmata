@@ -1,7 +1,7 @@
 AdvancedFirmata
 ===============
 
-AdvancedFirmata builds on StandardFirmata to add additional functionality such 
+AdvancedFirmata builds on [StandardFirmata](https://github.com/firmata/arduino/tree/master/examples/StandardFirmata) to add additional functionality such 
 as Stepper motor support. The idea behind AdvancedFirmata is to add features 
 that are not yet available in the StandardFirmata (that is included in 
 Firmata/examples/ in the Arduino IDE) and hopefully add them to the official
@@ -47,7 +47,7 @@ Restrictions
 
 Due ot the large file size, AdvancedFirmata will only run on newer Arduino 
 boards that have > 16KB of flash memory. This is most Arduino and 
-arduino-compatible boards release over the past few years.
+arduino-compatible boards released over the past few years.
 
 
 Contributing
