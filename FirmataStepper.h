@@ -96,11 +96,11 @@ class FirmataStepper {
     void updateStepPosition();
     bool done;
     bool running;
-    byte interface;     // Type of interface: Driver (step + dir), 2 wire, or 4 wire
+    byte interface;     // Type of interface: DRIVER, TWO_WIRE or FOUR_WIRE
     byte direction;        // Direction of rotation
     int speed;          // Speed in RPMs
-    unsigned long step_delay;    // delay between steps, in ms, based on speed
-    int number_of_steps;      // total number of steps this motor can take
+    unsigned long step_delay;    // delay between steps, in microseconds, based on speed
+    int number_of_steps;      // number of steps to make one revolution
     long step_number;        // which step the motor is on
     long seq_steps_left;   //number of steps left if running a sequence
     

@@ -451,7 +451,6 @@ void sysexCallback(byte command, byte argc, byte *argv)
     }
     break;
 
-  /* testing stepper */
   case STEPPER:
     byte stepCommand, deviceNum, directionPin, stepPin, stepDirection, interface;
     byte motorPin3, motorPin4;
@@ -483,8 +482,8 @@ void sysexCallback(byte command, byte argc, byte *argv)
         stepper[deviceNum].config(interface, stepsPerRev, directionPin, stepPin, motorPin3, motorPin4);
       }
     } else if (stepCommand == STEPPER_STEP) {
-      numSteps = (argv[2] + (argv[3] << 7));
-      stepDirection = argv[4];
+      numSteps = (long)argv[2] | ((long)argv[3] << 7) | ((long)argv[4] << 14);
+      stepDirection = argv[5];
       if (stepDirection == 0) { numSteps *= -1; }
       stepper[deviceNum].setNumSteps(numSteps);
     } else if (stepCommand == STEPPER_SPEED) {
