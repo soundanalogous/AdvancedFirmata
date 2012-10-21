@@ -6,7 +6,7 @@
   function calls.
   
   Modifications:
-  EasyDriver + Arduino Stepper (0.5) by Jeff Hoefs
+  EasyDriver + Arduino Stepper (0.1) by Jeff Hoefs
   Based on modifications by Chris Coleman and Rob Seward
   
   The original stepper.cpp v0.4 notes:
