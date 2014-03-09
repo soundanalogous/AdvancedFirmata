@@ -454,7 +454,8 @@ void sysexCallback(byte command, byte argc, byte *argv)
     break;
 
   case STEPPER_DATA:
-    byte stepCommand, deviceNum, directionPin, stepPin, stepDirection, interface, interfaceType;
+    byte stepCommand, deviceNum, directionPin, stepPin, stepDirection;
+    byte interface, interfaceType;
     byte motorPin3, motorPin4;
     unsigned int stepsPerRev;
     long numSteps;
@@ -467,8 +468,8 @@ void sysexCallback(byte command, byte argc, byte *argv)
 
     if (deviceNum < MAX_STEPPERS) {
       if (stepCommand == STEPPER_CONFIG) {
-        interface = argv[2];
-        interfaceType = interface & 0xF0;
+        interface = argv[2]; // upper 4 bits are the stepDelay, lower 4 bits are the interface type
+        interfaceType = interface & 0x0F; // the interface type is specified by the lower 4 bits
         stepsPerRev = (argv[3] + (argv[4] << 7));
 
         directionPin = argv[5]; // or motorPin1 for TWO_WIRE or FOUR_WIRE interface
