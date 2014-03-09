@@ -100,7 +100,7 @@ FirmataStepper::FirmataStepper(byte interface,
   pinMode(this->motor_pin_1, OUTPUT);
   pinMode(this->motor_pin_2, OUTPUT);
 
-  if (interface == FirmataStepper::FOUR_WIRE) {
+  if (this->interface == FirmataStepper::FOUR_WIRE) {
     this->motor_pin_3 = pin3;
     this->motor_pin_4 = pin4;    
     pinMode(this->motor_pin_3, OUTPUT);

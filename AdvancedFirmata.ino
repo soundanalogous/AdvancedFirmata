@@ -482,7 +482,7 @@ void sysexCallback(byte command, byte argc, byte *argv)
         }
       
         if (interfaceType == FirmataStepper::DRIVER || interfaceType == FirmataStepper::TWO_WIRE) {
-          stepper[deviceNum] = new FirmataStepper(interfaceType, stepsPerRev, directionPin, stepPin);
+          stepper[deviceNum] = new FirmataStepper(interface, stepsPerRev, directionPin, stepPin);
         } else if (interfaceType == FirmataStepper::FOUR_WIRE) {
           motorPin3 = argv[7];
           motorPin4 = argv[8];          
