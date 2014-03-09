@@ -38,7 +38,7 @@
 #define I2C_READ_WRITE_MODE_MASK B00011000
 #define I2C_10BIT_ADDRESS_MODE_MASK B00100000
 
-#define MAX_QUERIES 8
+#define MAX_QUERIES 8 // max number of i2c devices in read continuous mode
 #define MINIMUM_SAMPLING_INTERVAL 10
 
 #define REGISTER_NOT_SPECIFIED -1
@@ -454,7 +454,7 @@ void sysexCallback(byte command, byte argc, byte *argv)
     break;
 
   case STEPPER_DATA:
-    byte stepCommand, deviceNum, directionPin, stepPin, stepDirection, interface;
+    byte stepCommand, deviceNum, directionPin, stepPin, stepDirection, interface, interfaceType;
     byte motorPin3, motorPin4;
     unsigned int stepsPerRev;
     long numSteps;
@@ -468,6 +468,7 @@ void sysexCallback(byte command, byte argc, byte *argv)
     if (deviceNum < MAX_STEPPERS) {
       if (stepCommand == STEPPER_CONFIG) {
         interface = argv[2];
+        interfaceType = interface & 0xF0;
         stepsPerRev = (argv[3] + (argv[4] << 7));
 
         directionPin = argv[5]; // or motorPin1 for TWO_WIRE or FOUR_WIRE interface
@@ -479,9 +480,9 @@ void sysexCallback(byte command, byte argc, byte *argv)
           numSteppers++; // assumes steppers are added in order 0 -> 5
         }
       
-        if (interface == FirmataStepper::DRIVER || interface == FirmataStepper::TWO_WIRE) {
-          stepper[deviceNum] = new FirmataStepper(interface, stepsPerRev, directionPin, stepPin);
-        } else if (interface == FirmataStepper::FOUR_WIRE) {
+        if (interfaceType == FirmataStepper::DRIVER || interfaceType == FirmataStepper::TWO_WIRE) {
+          stepper[deviceNum] = new FirmataStepper(interfaceType, stepsPerRev, directionPin, stepPin);
+        } else if (interfaceType == FirmataStepper::FOUR_WIRE) {
           motorPin3 = argv[7];
           motorPin4 = argv[8];          
           setPinModeCallback(motorPin3, STEPPER);
