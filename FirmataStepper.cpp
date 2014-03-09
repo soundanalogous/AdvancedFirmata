@@ -84,6 +84,7 @@ FirmataStepper::FirmataStepper(byte interface,
   this->running = false;
   this->interface = interface & 0x0F; // default to Easy Stepper (or other step + direction driver)
 
+  // could update this in future to support additional delays if necessary
   if (((interface & 0xF0) >> 4) > 0) {
     // high current driver
     this->stepDelay = 2; // microseconds
