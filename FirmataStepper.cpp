@@ -4,7 +4,7 @@
   as well as EasyDriver (http://schmalzhaus.com/EasyDriver/) and
   other step + direction drive circuits.
 
-  FirmataStepper (0.1) by Jeff Hoefs
+  FirmataStepper (0.2) by Jeff Hoefs
 
   EasyDriver support based on modifications by Chris Coleman
 
@@ -59,7 +59,7 @@
  * Configure a stepper for an EasyDriver or other step + direction interface or
  * configure a bipolar or unipolar stepper motor for 2 wire drive mode.
  * Configure a bipolar or unipolar stepper for 4 wire drive mode.
- * @param interface Lower 4 bits:
+ * @param interface Lower 3 bits:
  * The interface type: FirmataStepper::DRIVER,
  * FirmataStepper::TWO_WIRE or FirmataStepper::FOUR_WIRE
  * Upper 4 bits: Any bits set = use 2 microsecond delay
