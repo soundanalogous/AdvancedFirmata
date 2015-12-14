@@ -1,6 +1,17 @@
 AdvancedFirmata
 ===============
 
+**Please note:** This repo is no longer actively maintained. Please use [firmatabuilder.com](http://firmatabuilder.com/) and [ConfigurableFirmata](https://github.com/firmata/ConfigurableFirmata) to enable the same (and even additional) features that AdvancedFirmata provided. To enable the same features, from the firmatabuilder website, select the following features:
+- DigitalInputFirmata
+- DigitalOutputFirmata
+- AnalogInputFirmata
+- AnalogOutputFirmata
+- ServoFirmata
+- I2CFirmata
+- StepperFirmata
+
+You may select additional features as well if the Firmata client library you are using supports them. Just be careful not to exceed the memory limits of your Arduino board.
+
 AdvancedFirmata builds on [StandardFirmata](https://github.com/firmata/arduino/tree/master/examples/StandardFirmata) to add additional functionality such
 as Stepper motor support. The idea behind AdvancedFirmata is to add features
 that are not yet available in the StandardFirmata (that is included in
